@@ -1,0 +1,15 @@
+.page-footer {
+  padding: 28px 32px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+.page-footer::before {
+  content: "";
+  display: block;
+  width: 2cm;
+  height: 1px;
+  margin: 0 auto 20px;
+  background: rgba(243, 239, 231, 0.12);
+}

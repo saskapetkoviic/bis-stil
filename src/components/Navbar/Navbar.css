@@ -1,0 +1,158 @@
+.topbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 32px;
+  mix-blend-mode: difference;
+  font-family: var(--font-nav);
+}
+.topbar.topbar--onpage {
+  mix-blend-mode: normal;
+  background: none;
+  backdrop-filter: none;
+}
+.topbar.topbar--fade {
+  transition: background-color 0.35s ease, backdrop-filter 0.35s ease;
+}
+.topbar.topbar--fade.topbar--scrolled {
+  background: linear-gradient(180deg, rgba(12, 10, 8, 0.75) 0%, rgba(12, 10, 8, 0.35) 100%);
+  backdrop-filter: blur(10px);
+}
+.home-corner-scrim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 45; 
+  width: min(520px, 42vw);
+  height: 300px;
+  pointer-events: none;
+  background: radial-gradient(75% 75% at 0% 0%,
+    rgba(6, 5, 4, 0.55) 0%,
+    rgba(6, 5, 4, 0.32) 22%,
+    rgba(6, 5, 4, 0.12) 42%,
+    rgba(6, 5, 4, 0) 68%);
+}
+.brand {
+  display: inline-flex;
+  flex-direction: column;
+  color: #fff;
+  text-decoration: none;
+}
+.topbar--onpage .brand { color: var(--cream); }
+.brand-name {
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  font-size: 20px;
+  line-height: 1;
+}
+.brand-sub {
+  margin-top: 6px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  font-size: 10px;
+  color: #c9a36a;
+  opacity: 0.95;
+}
+.topnav { display: flex; gap: 28px; align-items: center; }
+.topnav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.topbar--onpage .topnav a { color: var(--cream); }
+.topnav a:hover { opacity: 1; color: #c9a877; }
+.topnav .cta {
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 8px 16px;
+  border-radius: 100px;
+}
+
+.nav-toggle {
+  display: none;           
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.nav-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+.nav-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 40;              
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0;
+  padding: 0 40px;
+  background: rgba(20, 17, 15, 0.97);
+  backdrop-filter: blur(6px);
+  font-family: var(--font-nav);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+.mobile-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0s linear 0s;
+}
+.mobile-menu a {
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 18px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid rgba(243, 239, 231, 0.14);
+  transition: color 0.2s ease;
+}
+.mobile-menu a:last-child { border-bottom: 1px solid rgba(243, 239, 231, 0.14); }
+.mobile-menu a:hover { color: #c9a877; }
+
+@media (max-width: 720px) {
+  .topnav { gap: 16px; }
+  .topnav a:not(.cta) { display: none; }
+  .nav-toggle { display: flex; }
+
+  .home-corner-scrim { display: none; }
+  .topbar:not(.topbar--onpage) {
+    mix-blend-mode: normal;
+    background: linear-gradient(180deg, rgba(8, 7, 5, 0.97) 0%, rgba(8, 7, 5, 0.92) 45%, rgba(8, 7, 5, 0.7) 70%, rgba(8, 7, 5, 0.32) 88%, rgba(8, 7, 5, 0) 100%);
+    /* Produži gradijent ispod visine samog navbara da i podnaslov (NAMEŠTAJ PO MERI — RUČNA IZRADA) lepo isplovi preko heroja. */
+    padding-bottom: 64px;
+  }
+
+  .topbar.topbar--onpage {
+    transition: background-color 0.35s ease, backdrop-filter 0.35s ease;
+  }
+  .topbar.topbar--onpage.topbar--scrolled {
+    background: linear-gradient(180deg, rgba(12, 10, 8, 0.85) 0%, rgba(12, 10, 8, 0.4) 100%);
+    backdrop-filter: blur(10px);
+  }
+}

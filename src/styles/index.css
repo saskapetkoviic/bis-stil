@@ -1,0 +1,53 @@
+/* ---------- Reset & tokens ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #f3efe7;
+  --sand: #e7dfd2;
+  --charcoal: #201d1a;
+  --ink: #14110f;
+  --walnut: #7a5232;
+  --muted: rgba(243, 239, 231, 0.72);
+  --font: "Josefin Sans", sans-serif;
+  --font-nav: "Space Grotesk", sans-serif;
+  --font-hand: "Caveat", cursive;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--ink);
+  color: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  overscroll-behavior-y: none;
+  overflow-x: hidden;
+}
+
+a { color: inherit; }
+
+/* ---------- Suptilne animacije ulaska ---------- */
+/* Blagi fade + podizanje; koristi se na podstranicama (galerija, materijali,
+   kontakt) da se pri učitavanju "nešto desi" bez napadnog efekta. */
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes soft-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Poštuj korisnike koji su isključili animacije u sistemu. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,81 @@
+/* Uvećan uvodni tekst na desktopu; mobilni ostaje na 15px (minimum clamp-a). */
+.page-shell--gallery .page-head p { font-size: clamp(15px, 1.7vw, 22px); }
+
+/* ---------- Sekcije galerije ---------- */
+.gallery-section { margin-bottom: 72px; scroll-margin-top: 120px; }
+.gallery-section > h2 {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 24px;
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.gallery-section > h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(243, 239, 231, 0.14);
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  padding-left: 80px;
+  padding-right: 80px;
+}
+.gallery__item {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border: 1px solid rgba(243, 239, 231, 0.14);
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #2a2622 0%, #201d1a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-in;
+  animation: rise-in 0.5s ease backwards;
+  animation-delay: calc(min(var(--i, 0) * 0.05s, 0.6s));
+}
+.gallery__item img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  transition: transform 0.5s ease;
+}
+.gallery__item:hover img { transform: scale(1.06); }
+.gallery__item::after {
+  content: "⤢";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: #fff;
+  background: rgba(20, 17, 15, 0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.gallery__item:hover::after { opacity: 1; }
+
+@media (max-width: 1100px) {
+  .gallery { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 720px) {
+  .gallery { grid-template-columns: repeat(2, 1fr); gap: 12px; padding-left: 22px; padding-right: 22px; }
+}
