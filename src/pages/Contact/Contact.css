@@ -14,7 +14,7 @@
   gap: 56px;
   align-items: start;
 }
-.contact__intro p { color: var(--muted); font-size: clamp(15px, 1.7vw, 22px); max-width: 46ch; }
+.contact__intro p { color: var(--muted); font-size: clamp(19px, 1.7vw, 20px); max-width: 46ch; }
 .contact__intro { animation: rise-in 0.6s ease 0.1s backwards; }
 .info-list { list-style: none; display: grid; gap: 22px; }
 .info-list li { animation: rise-in 0.55s ease backwards; }
@@ -40,11 +40,11 @@
   filter: brightness(1.6);
   font-weight: 600;
 }
-.info-list .value { font-size: 20px; }
+.info-list .value { font-size: 21px; }
 .info-list a { color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(243, 239, 231, 0.28); }
 .info-list a:hover { border-color: var(--cream); }
 .hours { display: grid; gap: 6px; margin-top: 2px; }
-.hours div { display: flex; justify-content: space-between; gap: 24px; max-width: 340px; font-size: 18px; }
+.hours div { display: flex; justify-content: space-between; gap: 24px; max-width: 340px; font-size: 19px; }
 .hours .muted { color: var(--muted); }
 
 .contact__left { display: flex; flex-direction: column; }

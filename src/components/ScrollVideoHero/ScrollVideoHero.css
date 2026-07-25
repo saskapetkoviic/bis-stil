@@ -90,7 +90,7 @@
 .checkpoint--right .checkpoint__body { margin-left: auto; }
 
 .eyebrow {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--walnut);
@@ -100,14 +100,14 @@
 }
 .checkpoint h1,
 .checkpoint h2 {
-  font-size: clamp(40px, 6vw, 76px);
+  font-size: clamp(36px, 4.4vw, 64px);
   line-height: 1.02;
   font-weight: 600;
   letter-spacing: -0.01em;
   margin-bottom: 22px;
 }
 .lead {
-  font-size: 23px;
+  font-size: 24px;
   color: var(--muted);
   max-width: 46ch;
 }
@@ -125,7 +125,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--muted);
@@ -170,6 +170,6 @@
   .checkpoint--right .checkpoint__body,
   .checkpoint--right .lead { margin-left: 0; }
   .checkpoint h1,
-  .checkpoint h2 { font-size: 31px; margin-bottom: 16px; }
-  .lead { font-size: 18px; }
+  .checkpoint h2 { font-size: 34px; margin-bottom: 16px; }
+  .lead { font-size: 19px; }
 }

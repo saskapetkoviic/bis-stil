@@ -6,6 +6,8 @@ export default function MaterialModal({ swatches, index, onNavigate, onClose }) 
   const data = isOpen ? swatches[index] : null
   const closeBtnRef = useRef(null)
   const lastFocusRef = useRef(null)
+  const touchStartX = useRef(null)
+  const touchStartY = useRef(null)
 
   useEffect(() => {
     if (!isOpen) return
@@ -27,6 +29,24 @@ export default function MaterialModal({ swatches, index, onNavigate, onClose }) 
   }, [isOpen, onClose, onNavigate])
 
   const canNavigate = isOpen && swatches.length > 1
+
+  function handleTouchStart(e) {
+    const t = e.touches[0]
+    touchStartX.current = t.clientX
+    touchStartY.current = t.clientY
+  }
+
+  function handleTouchEnd(e) {
+    if (touchStartX.current == null || !canNavigate) return
+    const t = e.changedTouches[0]
+    const dx = t.clientX - touchStartX.current
+    const dy = t.clientY - touchStartY.current
+    touchStartX.current = null
+    // Horizontalni prevlak: prag 45px i mora biti izraženiji od vertikalnog.
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
+      onNavigate(dx < 0 ? 1 : -1)
+    }
+  }
 
   return (
     <div
@@ -59,7 +79,11 @@ export default function MaterialModal({ swatches, index, onNavigate, onClose }) 
         </button>
       )}
 
-      <div className="mat-modal__card">
+      <div
+        className="mat-modal__card"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <button className="mat-modal__close" type="button" aria-label="Zatvori" onClick={onClose} ref={closeBtnRef}>
           &times;
         </button>

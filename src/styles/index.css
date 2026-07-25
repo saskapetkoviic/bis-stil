@@ -1,4 +1,3 @@
-/* ---------- Reset & tokens ---------- */
 *,
 *::before,
 *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,9 +28,6 @@ body {
 
 a { color: inherit; }
 
-/* ---------- Suptilne animacije ulaska ---------- */
-/* Blagi fade + podizanje; koristi se na podstranicama (galerija, materijali,
-   kontakt) da se pri učitavanju "nešto desi" bez napadnog efekta. */
 @keyframes rise-in {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }

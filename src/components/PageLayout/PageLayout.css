@@ -31,13 +31,13 @@
 .page-head { margin-bottom: 56px; max-width: 950px; animation: rise-in 0.6s ease both; }
 .page-head .eyebrow { margin-bottom: 18px; }
 .page-head h1 {
-  font-size: clamp(38px, 6vw, 68px);
+  font-size: clamp(40px, 5vw, 60px);
   line-height: 1.03;
   font-weight: 700;
   letter-spacing: -0.01em;
   margin-bottom: 20px;
 }
-.page-head p { color: var(--muted); font-size: clamp(15px, 1.4vw, 18px); max-width: 95ch; line-height: 1.5; }
+.page-head p { color: var(--muted); font-size: clamp(19px, 1.7vw, 20px); max-width: 95ch; line-height: 1.55; }
 .page-head p a {
   color: #c9a877;
   text-decoration: none;
@@ -47,7 +47,7 @@
 .page-head p a:hover { color: #dcbe93; border-color: #dcbe93; }
 
 .eyebrow {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--walnut);
@@ -61,11 +61,11 @@
   margin-top: 48px;
   color: var(--muted);
   text-decoration: none;
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font: inherit;
-  font-size: 13px;
+  font-size: 14px;
   background: none;
   border: none;
   padding: 0;
@@ -79,6 +79,6 @@
   .page-main { padding: 120px 22px 72px; }
   .back-link--desktop { display: none; }
   .back-link--mobile { display: inline-block; }
-  .page-head h1 { font-size: 35px; margin-bottom: 16px; }
+  .page-head h1 { font-size: 38px; margin-bottom: 16px; }
   .page-head { margin-bottom: 36px; }
 }
