@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bisstil.rs/sitemap.xml
