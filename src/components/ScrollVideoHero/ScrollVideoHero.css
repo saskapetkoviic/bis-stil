@@ -129,7 +129,11 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--muted);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
 }
+.scroll-hint.is-ready { opacity: 1; }
 .scroll-hint .arrow { animation: bob 1.6s ease-in-out infinite; }
 @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 
@@ -159,10 +163,10 @@
     text-align: left;
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.98) 0%,
-      rgba(0, 0, 0, 0.92) 35%,
-      rgba(0, 0, 0, 0.7) 60%,
-      rgba(0, 0, 0, 0.3) 80%,
+      rgba(0, 0, 0, 0.82) 0%,
+      rgba(0, 0, 0, 0.62) 35%,
+      rgba(0, 0, 0, 0.38) 60%,
+      rgba(0, 0, 0, 0.15) 80%,
       rgba(0, 0, 0, 0) 100%
     );
   }

@@ -6,6 +6,7 @@ import video3 from '../../assets/videos/video3.mp4'
 import video1reversed from '../../assets/videos/video1reversed.mp4'
 import video2reversed from '../../assets/videos/video2reversed.mp4'
 import video3reversed from '../../assets/videos/video3reversed.mp4'
+import video1poster from '../../assets/videos/video1-poster.jpg'
 import './ScrollVideoHero.css'
 
 export default function ScrollVideoHero() {
@@ -25,7 +26,7 @@ export default function ScrollVideoHero() {
     const N = videos.length
     const durations = new Array(N)
     const readyFlags = new Array(N)
-    let ready = false
+    let allLoaded = false
 
     const tailTrim = new Array(N).fill(0)
     tailTrim[N - 1] = 0.2
@@ -78,7 +79,8 @@ export default function ScrollVideoHero() {
       readyFlags[i] = true
       durations[i] = d
       try { v.currentTime = headOf(i) } catch (e) {}
-      if (i === 0) { ready = true; setProgressFor(0) }
+      if (i === 0) setProgressFor(0)
+      checkAllLoaded()
     }
 
     function onRevReadyFor(r) {
@@ -89,6 +91,25 @@ export default function ScrollVideoHero() {
       revReady[r] = true
       revDur[r] = d
       try { v.currentTime = revHeadOf(r) } catch (e) {}
+      checkAllLoaded()
+    }
+
+    // Scrubbing needs every clip (forward and reversed) buffered, otherwise
+    // scrolling into an unloaded segment shows a black/frozen frame. So the
+    // hero stays locked until all videos are ready, then reveals the scroll
+    // hint to invite scrolling.
+    let readyFallback = null
+    function markReady() {
+      if (allLoaded) return
+      allLoaded = true
+      if (readyFallback) { clearTimeout(readyFallback); readyFallback = null }
+      const hint = container.querySelector('.scroll-hint')
+      if (hint) hint.classList.add('is-ready')
+    }
+    function checkAllLoaded() {
+      for (let i = 0; i < N; i++) if (!readyFlags[i]) return
+      for (let r = 0; r < R; r++) if (!revReady[r]) return
+      markReady()
     }
 
     function armForward(i) {
@@ -136,8 +157,15 @@ export default function ScrollVideoHero() {
         .catch(() => { if (!cancelled) onArm() })
     }
 
+    // Load every clip up front (as blobs, for smooth scrubbing in both
+    // directions). The hero stays locked until they are all ready.
     videos.forEach((v, i) => loadToBlob(v, () => armForward(i)))
     revVideos.forEach((v, r) => loadToBlob(v, () => armReversed(r)))
+
+    // Safety net: unlock even if a clip never loads, so the hero can't stay
+    // locked forever on a flaky connection.
+    readyFallback = setTimeout(markReady, 15000)
+    cleanups.push(() => { if (readyFallback) clearTimeout(readyFallback) })
 
     function clamp01(p) { return Math.max(0, Math.min(1, p)) }
     function setProgressOverall(overall) {
@@ -298,7 +326,7 @@ export default function ScrollVideoHero() {
     }
 
     function handleIntent(direction) {
-      if (!ready || animating) return true
+      if (!allLoaded || animating) return true
 
       if (released) {
         if (direction < 0 && window.scrollY <= 0) {
@@ -377,7 +405,7 @@ export default function ScrollVideoHero() {
   return (
     <section className="scroll-stage" id="stage" ref={containerRef}>
       <div className="scroll-sticky">
-        <video className="scroll-video is-active" data-video="0" data-src={video1} muted playsInline preload="auto" aria-hidden="true" />
+        <video className="scroll-video is-active" data-video="0" data-src={video1} poster={video1poster} muted playsInline preload="auto" aria-hidden="true" />
         <video className="scroll-video" data-video="1" data-src={video2} muted playsInline preload="auto" aria-hidden="true" />
         <video className="scroll-video" data-video="2" data-src={video3} muted playsInline preload="auto" aria-hidden="true" />
 
