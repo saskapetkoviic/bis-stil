@@ -436,7 +436,7 @@ export default function ScrollVideoHero() {
             <h2>Sve počinje od izbora materijala.</h2>
             <p className="lead">
               Svaki komad nameštaja počinje izborom materijala. Radimo sa ivericom u širokom izboru dekora i boja. 
-              Materijal biramo zajedno sa vama, prema prostoru, nameni i budžetu, jer dobar temelj je preduslov za dobar rezultat.
+              Materijal biramo zajedno sa Vama, prema prostoru, nameni i budžetu, jer dobar temelj je preduslov za dobar rezultat.
             </p>
           </div>
         </div>
@@ -458,7 +458,7 @@ export default function ScrollVideoHero() {
             <h2>Oplemenjena iverica, oblikovana za Vaš dom.</h2>
             <p className="lead">
               Napravljeno da se savršeno uklapa u Vaš prostor. Snimci na ovoj stranici
-              prikazuju neke od proizvoda naše firme, a u <Link to="/galerija">Galeriji</Link> vas čeka još
+              prikazuju neke od proizvoda naše firme, a u <Link to="/galerija">Galeriji</Link> Vas čeka još
               fotografija - svaka je rezultat desetina sati rada.
             </p>
           </div>

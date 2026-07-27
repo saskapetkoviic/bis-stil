@@ -14,7 +14,7 @@ export default function Contact() {
           <div className="contact__intro">
             <p>
               Za upite, ponude i cene, kontaktirajte nas telefonom ili mejlom, ili nas posetite u
-              radionici u Aleksandrovcu. Rado ćemo vam pomoći da vaš komad nastane baš onako kako želite.
+              radionici u Aleksandrovcu. Rado ćemo Vam pomoći da Vaš komad nastane baš onako kako želite.
             </p>
           </div>
 
